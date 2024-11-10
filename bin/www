@@ -1,0 +1,17 @@
+const app = require("../app");
+const debug = require("debug")("express-locallibrary-myself:server");
+const http = require("http");
+
+const port = 3000;
+
+app.set("port", port);
+
+const server = http.createServer(app);
+server.listen(port);
+server.on("error", onError);
+
+function onError(error) {
+  debug("error");
+}
+
+debug(`Listening at port ${port}`);
