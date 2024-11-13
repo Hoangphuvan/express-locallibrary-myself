@@ -4,14 +4,16 @@ const http = require("http");
 
 const port = 3000;
 
-app.set("port", port);
+// app.set("port", port);
 
-const server = http.createServer(app);
-server.listen(port);
-server.on("error", onError);
+// const server = http.createServer(app);
+// server.listen(port);
+// server.on("error", onError);
 
-function onError(error) {
-  debug("error");
-}
+// function onError(error) {
+//   debug("error");
+// }
+
+app.listen(port);
 
 debug(`Listening at port ${port}`);

@@ -6,8 +6,17 @@ const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const wikiRouter = require("./routes/wiki");
 
 const app = express();
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+const mongoDB =
+  "mongodb+srv://cooluser:xwHKR16wp3khpuYI@cluster0.frnez.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -20,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/wiki", wikiRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));
