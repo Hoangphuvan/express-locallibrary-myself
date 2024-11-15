@@ -6,6 +6,8 @@ const author_controller = require("../controllers/authorController");
 const genre_controller = require("../controllers/genreController");
 const book_instance_controller = require("../controllers/bookinstanceController");
 
+router.get("/", book_controller.index);
+
 ///Author routes///
 router.get("/author/create", author_controller.author_create_get);
 
